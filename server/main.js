@@ -37,7 +37,11 @@ const server = Bun.serve({
 			CLIENT_BASE,
 		);
 
-		if (content_type === null || !(await file.exists())) {
+		if (
+			content_type === null ||
+			file_url === null ||
+			!(await file.exists())
+		) {
 			return Response("my bad", { status: 404 });
 		}
 
