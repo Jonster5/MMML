@@ -1,0 +1,14 @@
+{
+	"name": "qmp",
+	"module": "source/server.js",
+	"devDependencies": {
+		"@types/bun": "latest"
+	},
+	"peerDependencies": {
+		"typescript": "^5.0.0"
+	},
+	"scripts": {
+		"dev": "bun --watch ./server/main.js"
+	},
+	"type": "module"
+}
