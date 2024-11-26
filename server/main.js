@@ -30,18 +30,19 @@ const server = Bun.serve({
 		let file_name = match[1];
 		let file_type = match[2];
 		let content_type = getContentType(file_type);
+		let dir_name = getDirName(file_type);
 
-		let file = Bun.file(file_url);
+		if (content_type === null || dir_name === null) {
+			return Response("my bad", { status: 404 });
+		}
+
 		let file_url = new URL(
-			`./${getDirName(file_type)}/${file_name}.${file_type}`,
+			`./${dir_name}/${file_name}.${file_type}`,
 			CLIENT_BASE,
 		);
+		let file = Bun.file(file_url);
 
-		if (
-			content_type === null ||
-			file_url === null ||
-			!(await file.exists())
-		) {
+		if (!(await file.exists())) {
 			return Response("my bad", { status: 404 });
 		}
 
