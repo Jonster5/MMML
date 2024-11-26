@@ -1,4 +1,4 @@
-# qmp
+# MMML
 
 To install dependencies:
 
