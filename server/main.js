@@ -1,4 +1,4 @@
-const CLIENT_BASE = new URL(process.env.CLIENT_BASE_URL);
+const CLIENT_BASE = new URL(process.env.CLIENT_BASE_URL ?? "../client/");
 
 const server = Bun.serve({
 	development: true,
